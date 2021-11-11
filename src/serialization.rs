@@ -66,7 +66,7 @@ where
 }
 
 /// Prepends the length of the buffer to the buffer.
-pub fn finalize_serialization( buffer: &mut Vec<u8>) {
+pub fn finalize_serialization(buffer: &mut Vec<u8>) {
     let buffer_len = buffer.len();
     for (index, b) in buffer_len.to_le_bytes().iter().enumerate() {
         buffer.insert(index, *b);

@@ -1,5 +1,6 @@
-use thiserror::Error;
 use std::fmt;
+
+use thiserror::Error;
 
 /// An enumeration of the errors that can occur while ensuring a String is normalized.
 #[derive(Debug, Error)]
@@ -61,9 +62,9 @@ impl NormalizedString {
     }
 }
 
-impl Into<String> for NormalizedString {
-    fn into(self) -> String {
-        self.0.clone()
+impl From<NormalizedString> for String {
+    fn from(v: NormalizedString) -> Self {
+        v.0
     }
 }
 
