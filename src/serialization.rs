@@ -3,7 +3,7 @@ use std::string::FromUtf8Error;
 use thiserror::Error;
 
 /// An enumeration of errors that can occur during custom serialization.
-#[derive(Debug, Error)]
+#[derive(Debug, Error, PartialEq)]
 pub enum SerializationError {
     #[error("Expected {0} bytes, found {1}")]
     UnexpectedByteCount(usize, usize),
