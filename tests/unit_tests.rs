@@ -12,7 +12,7 @@ fn test_normalized_string() {
 #[test]
 fn test_u32_serialization() {
     let mut buffer = Vec::new();
-    
+
     assert!(remove_u32(&mut buffer).is_err());
 
     buffer.append(&mut Vec::from(32u32.to_le_bytes()));
