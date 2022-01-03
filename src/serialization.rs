@@ -106,3 +106,20 @@ pub fn remove_u32(buffer: &mut Vec<u8>) -> Result<u32, SerializationError> {
     *buffer = remaining_bytes;
     Ok(result)
 }
+
+/// Removes an i32 for the following value from the buffer.
+/// If the buffer does not contain enough elements to create a u32, the buffer is unchanged
+/// and an error is returned.
+pub fn remove_i32(buffer: &mut Vec<u8>) -> Result<i32, SerializationError> {
+    let i32_len = std::mem::size_of::<i32>();
+    if buffer.len() < i32_len {
+        return Err(SerializationError::UnexpectedByteCount(
+            i32_len,
+            buffer.len(),
+        ));
+    }
+    let remaining_bytes = buffer.split_off(i32_len);
+    let result = i32::from_le_bytes(buffer.as_slice().try_into().unwrap());
+    *buffer = remaining_bytes;
+    Ok(result)
+}
