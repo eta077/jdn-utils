@@ -108,7 +108,7 @@ pub fn remove_u32(buffer: &mut Vec<u8>) -> Result<u32, SerializationError> {
 }
 
 /// Removes an i32 for the following value from the buffer.
-/// If the buffer does not contain enough elements to create a u32, the buffer is unchanged
+/// If the buffer does not contain enough elements to create an i32, the buffer is unchanged
 /// and an error is returned.
 pub fn remove_i32(buffer: &mut Vec<u8>) -> Result<i32, SerializationError> {
     let i32_len = std::mem::size_of::<i32>();
